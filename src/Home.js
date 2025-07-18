@@ -25,7 +25,6 @@ const Flatlist = ({ navigation }) => {
       setAllSurahs(tempSurahs);
       return;
     }
-    console.log(" i am here", tempSurahs.length);
     const filtered = tempSurahs?.filter((item) =>
       item.transliteration.toLowerCase().includes(data)
     );
@@ -39,7 +38,7 @@ const Flatlist = ({ navigation }) => {
   const getApiData = async () => {
     try {
       const response = await fetch(
-        "https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran.json"
+        "https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran_en.json"
       );
       const allData = await response.json();
       if (allData) {

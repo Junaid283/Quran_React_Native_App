@@ -109,7 +109,7 @@ const Login = ({ navigation }) => {
             value={password}
           />
           <TouchableOpacity onPress={ShowPassword} style={myStyle.eyeIcon}>
-            <AntDesign name="eye" size={24} color="black" />
+            <AntDesign name="eye" size={24} color="rgba(204, 166, 43, 0.99)" />
           </TouchableOpacity>
         </View>
         {passwordError ? (
@@ -164,7 +164,7 @@ const Login = ({ navigation }) => {
 const myStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3F4F6",
+    backgroundColor: "#3b1941ff",
   },
   header: {
     alignItems: "center",
@@ -173,7 +173,7 @@ const myStyle = StyleSheet.create({
   title: {
     fontSize: scale(20),
     fontWeight: "bold",
-    color: "#1F2937",
+    color: "rgba(204, 166, 43, 0.99)",
   },
   registerRow: {
     flexDirection: "row",
@@ -182,7 +182,7 @@ const myStyle = StyleSheet.create({
   labelText: {
     fontSize: scale(12),
     fontWeight: "500",
-    color: "#374151",
+    color: "rgba(204, 166, 43, 0.99)",
   },
   registerLink: {
     fontSize: scale(12),
@@ -198,46 +198,46 @@ const myStyle = StyleSheet.create({
   label: {
     fontSize: scale(12),
     fontWeight: "700",
-    color: "#111827",
+    color: "rgba(204, 166, 43, 0.99)",
     marginBottom: scale(2),
   },
   input: {
-    borderColor: "#D1D5DB",
+    borderColor: "#301934",
     borderWidth: scale(2),
     fontSize: scale(12),
-    color: "black",
+    color: "rgba(204, 166, 43, 0.99)",
     padding: scale(10),
     marginBottom: scale(15),
     borderRadius: scale(8),
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#301934",
   },
   passwordContainer: {
     flexDirection: "row",
-    borderColor: "#D1D5DB",
+    borderColor: "#301934",
     borderWidth: scale(2),
     alignItems: "center",
     borderRadius: scale(8),
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#301934",
     marginBottom: scale(5),
   },
   passwordInput: {
     flex: 1,
     fontSize: scale(12),
-    color: "black",
+    color: "rgba(204, 166, 43, 0.99)",
     padding: scale(10),
   },
   eyeIcon: {
     paddingHorizontal: scale(10),
   },
   error: {
-    color: "red",
+    color: "#c52b10f6",
     marginBottom: scale(10),
   },
   buttonWrapper: {
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#2563EB",
+    backgroundColor: "rgba(204, 166, 43, 0.99)",
     paddingVertical: verticalScale(10),
     borderRadius: scale(10),
     alignItems: "center",
@@ -245,7 +245,7 @@ const myStyle = StyleSheet.create({
     elevation: 3,
   },
   buttonText: {
-    color: "#FFF",
+    color: "#301934",
     fontSize: scale(15),
     fontWeight: "bold",
     paddingHorizontal: scale(45),
@@ -258,7 +258,7 @@ const myStyle = StyleSheet.create({
   forgotPasswordText: {
     fontSize: scale(12),
     fontWeight: "700",
-    color: "#4B5563",
+    color: "rgba(204, 166, 43, 0.99)",
   },
   successMsgContainer: {
     alignItems: "center",
@@ -267,7 +267,7 @@ const myStyle = StyleSheet.create({
   successMsg: {
     fontSize: scale(20),
     fontWeight: "800",
-    color: "#10B981", // Green Success
+    color: "rgba(204, 166, 43, 0.99)", // Green Success
   },
 });
 

@@ -105,7 +105,6 @@ const Signup = ({ navigation }) => {
       checkFirstPassword === checkConfirmPassword &&
       userEmail.includes("@")
     ) {
-      navigation.navigate("Login Screen");
       if (
         FullNameError ||
         EmailError ||
@@ -117,6 +116,7 @@ const Signup = ({ navigation }) => {
         setFirstPassword("");
         setConfirmPassword("");
       }
+      navigation.navigate("Login_Screen");
     }
   };
 
@@ -164,7 +164,7 @@ const Signup = ({ navigation }) => {
               value={checkFirstPassword}
             />
             <TouchableOpacity onPress={showPassword} style={styles.eyeIcon}>
-              <AntDesign name="eye" size={24} color="#555" />
+              <AntDesign name="eye" size={24} color="rgba(204, 166, 43, 0.99)" />
             </TouchableOpacity>
           </View>
           {passwordError ? (
@@ -187,7 +187,7 @@ const Signup = ({ navigation }) => {
               onPress={showConfirmPassword}
               style={styles.eyeIcon}
             >
-              <AntDesign name="eye" size={24} color="#555" />
+              <AntDesign name="eye" size={24} color="rgba(204, 166, 43, 0.99)" />
             </TouchableOpacity>
           </View>
           {confirmpasswordError ? (
@@ -214,25 +214,6 @@ const Signup = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("FlatList");
-            if (
-              FullNameError ||
-              EmailError ||
-              passwordError ||
-              confirmpasswordError
-            ) {
-              setFullNameError("");
-              setEmailError("");
-              setPasswordError("");
-              setConfirmPasswordError("");
-            }scale(
- )         }}
-          style={{ marginTop: 30, alignSelf: "center" }}
-        >
-          <Text style={styles.link}>Go to FlatList</Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -240,14 +221,14 @@ const Signup = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F3F4F6",
+    backgroundColor: "#3b1941ff",
     flex: 1,
   },
   heading: {
     fontSize: scale(20),
     fontWeight: "bold",
     textAlign: "center",
-    color: "#1F2937",
+    color: "rgba(204, 166, 43, 0.99)",
     marginBottom: scale(30),
   },
   inputContainer: {
@@ -256,37 +237,37 @@ const styles = StyleSheet.create({
   label: {
     fontSize: scale(12),
     fontWeight: "700",
-    color: "#111827",
+    color: "rgba(204, 166, 43, 0.99)",
     marginBottom: scale(6),
   },
   input: {
-    backgroundColor: "#FFF",
+    backgroundColor: "#301934",
     borderWidth: scale(2),
-    borderColor: "#D1D5DB",
+    borderColor: "#301934",
     borderRadius: scale(10),
     padding: scale(10),
     fontSize: scale(12),
-    color: "black",
+    color: "rgba(204, 166, 43, 0.99)",
   },
   passwordWrapper: {
     flexDirection: "row",
     alignItems: "center",
     borderWidth: scale(2),
-    borderColor: "#D1D5DB",
+    borderColor: "#301934",
     borderRadius: scale(10),
-    backgroundColor: "#FFF",
+    backgroundColor: "#301934",
   },
   passwordInput: {
     flex: 1,
     padding: scale(10),
     fontSize: scale(12),
-    color: "black",
+    color: "rgba(204, 166, 43, 0.99)",
   },
   eyeIcon: {
     paddingHorizontal: scale(12),
   },
   button: {
-    backgroundColor: "#2563EB",
+    backgroundColor: "rgba(204, 166, 43, 0.99)",
     paddingVertical: verticalScale(10),
     borderRadius: scale(10),
     alignItems: "center",
@@ -294,7 +275,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   buttonText: {
-    color: "#FFF",
+    color: "#301934",
     fontSize: scale(15),
     fontWeight: "bold",
     paddingHorizontal: scale(45),

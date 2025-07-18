@@ -16,16 +16,28 @@ const Ayahs = ({ route }) => {
   const printAyahs = (item) => {
     return (
       <View style={styles.AyahsMainView}>
-        
-        <Text
-          style={{
-            fontSize: scale(17),
-            color: "rgba(204, 166, 43, 0.99)",
-            fontWeight: "600",
-          }}
-        >
-          {item.text}({item.id})
-        </Text>
+        <View>
+          <Text
+            style={{
+              fontSize: scale(17),
+              color: "rgba(204, 166, 43, 0.99)",
+              fontWeight: "600",
+            }}
+          >
+            {item.text}({item.id})
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={{
+              fontSize: scale(17),
+              color: "rgba(204, 166, 43, 0.99)",
+              fontWeight: "600",
+            }}
+          >
+            {item.translation}({item.id})
+          </Text>
+        </View>
       </View>
     );
   };
@@ -44,21 +56,22 @@ const Ayahs = ({ route }) => {
               backgroundColor: "#301934",
               padding: scale(15),
               borderRadius: scale(20),
-              shadowOpacity:0.5,
-              
+              shadowOpacity: 0.5,
             }}
           >
             <Text style={styles.typeStyle}>Surah No.{item?.id}</Text>
             <Text style={styles.typeStyle}>{item?.type}</Text>
-            <Text style={styles.typeStyle}>Total Verses: {item?.total_verses}</Text>
+            <Text style={styles.typeStyle}>
+              Total Verses: {item?.total_verses}
+            </Text>
           </View>
           <View
             style={{
               backgroundColor: "#301934",
               padding: scale(15),
-              paddingHorizontal:scale(15),
+              paddingHorizontal: scale(15),
               borderRadius: scale(20),
-              shadowOpacity:0.5,
+              shadowOpacity: 0.5,
             }}
           >
             <Text style={styles.title}>{item?.name}</Text>
@@ -90,7 +103,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#3b1941ff",
-    //marginHorizontal: scale(20),
   },
   typeStyle: {
     fontSize: scale(15),
@@ -106,10 +118,9 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   AyahsMainView: {
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    //marginHorizontal: scale(10),
     paddingVertical: scale(10),
     paddingHorizontal: scale(15),
     backgroundColor: "#301934",
