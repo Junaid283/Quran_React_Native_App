@@ -260,15 +260,7 @@ const myStyle = StyleSheet.create({
     fontWeight: "700",
     color: "rgba(204, 166, 43, 0.99)",
   },
-  successMsgContainer: {
-    alignItems: "center",
-    marginTop: scale(50),
-  },
-  successMsg: {
-    fontSize: scale(20),
-    fontWeight: "800",
-    color: "rgba(204, 166, 43, 0.99)", // Green Success
-  },
+
 });
 
 export default Login;

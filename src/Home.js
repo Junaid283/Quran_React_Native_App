@@ -2,8 +2,10 @@ import Entypo from "@expo/vector-icons/Entypo";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import { useEffect, useState } from "react";
 import {
+  Dimensions,
   FlatList,
   Image,
+  Modal,
   StyleSheet,
   Text,
   TextInput,
@@ -16,6 +18,9 @@ const Flatlist = ({ navigation }) => {
   const [searchInput, setSearchInput] = useState("");
   const [allSurahs, setAllSurahs] = useState([]);
   const [tempSurahs, setTempSurahs] = useState([]);
+
+
+
 
 
   const handleSearchInput = (data) => {
@@ -38,7 +43,7 @@ const Flatlist = ({ navigation }) => {
   const getApiData = async () => {
     try {
       const response = await fetch(
-        "https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran_en.json"
+        "https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/quran.json"
       );
       const allData = await response.json();
       if (allData) {
@@ -84,6 +89,8 @@ const Flatlist = ({ navigation }) => {
     </TouchableOpacity>
   );
 
+
+
   const searchBarFun = () => (
     <View style={styles.searchWrapper}>
       <View style={styles.searchBarContainer}>
@@ -105,6 +112,7 @@ const Flatlist = ({ navigation }) => {
     </View>
   );
 
+
   return (
     <View style={styles.container}>
       {searchBarFun()}
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
   },
   searchWrapper: {
     marginTop: scale(20),
-    marginBottom: scale(10),
+    marginBottom: scale(5),
     backgroundColor: "#301934",
     borderRadius: scale(20),
     paddingHorizontal: scale(10),
@@ -173,6 +181,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "rgba(204, 166, 43, 0.99)",
   },
+
 });
 
 export default Flatlist;
