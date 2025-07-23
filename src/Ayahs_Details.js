@@ -13,22 +13,31 @@ import { scale, verticalScale } from "./helperFunctions";
 
 const Ayahs = ({ route }) => {
   const [showModal, setShowModal] = useState(false);
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState(null);
   const [allSurahs, setAllSurahs] = useState([]);
 
   const { item } = route.params;
-  console.log('item', item)
 
-  let tempArray = [{ Name: "Urdu", trademark: "ur" }];
   useEffect(() => {
     setAllSurahs(item?.verses);
   }, []);
 
+  let selectLanguageArray = [
+    { Name: "Urdu", trademark: "ur" },
+    { Name: "English", trademark: "en" },
+    { Name: "Turkish", trademark: "tr" },
+    { Name: "Russian", trademark: "ru" },
+    { Name: "Swedish", trademark: "sv" },
+    { Name: "Indonesian", trademark: "id" },
+    { Name: "French", trademark: "fr" },
+    { Name: "Spanish", trademark: "es" },
+    { Name: "Chinese", trademark: "zh" },
+    { Name: "Bengali", trademark: "bn" },
+  ];
+
   const showModalFunc = () => {
     setShowModal(!showModal);
   };
-
-  let sdf ="https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/ur/114.json"
 
   const getApiData = async (templanguage) => {
     try {
@@ -37,7 +46,7 @@ const Ayahs = ({ route }) => {
       );
       const allData = await response.json();
       if (allData) {
-        setAllSurahs(allData);
+        setAllSurahs(allData.verses);
       }
     } catch (error) {
       console.error("Failed to fetch products:", error);
@@ -74,7 +83,6 @@ const Ayahs = ({ route }) => {
       </View>
     );
   };
-
   const renderModal = () => {
     return (
       <Modal
@@ -115,116 +123,20 @@ const Ayahs = ({ route }) => {
                 backgroundColor: "#301934",
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_ur");
-                  getApiData("ur");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Urdu</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_en");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>English</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_tr");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Turkish</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_sv");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Swedish</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_ru");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Russian</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_id");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Indonesian</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_fr");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>French</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_es");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Spanish</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_zh");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Chinese</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  showModalFunc();
-                  setLanguage("_bn");
-                }}
-              >
-                <View style={styles.languageViewStyle}>
-                  <Text style={styles.languageTextStyle}>Bengali</Text>
-                </View>
-              </TouchableOpacity>
+              {selectLanguageArray?.map((item) => {
+                return (
+                  <TouchableOpacity
+                    style={styles.languageViewStyle}
+                    onPress={() => {
+                      showModalFunc();
+                      setLanguage(item.Name);
+                      getApiData(item.trademark);
+                    }}
+                  >
+                    <Text style={styles.languageTextStyle}>{item.Name}</Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         </Pressable>
@@ -277,27 +189,9 @@ const Ayahs = ({ route }) => {
             <Text style={styles.languageTextStyle}>Select Language</Text>
           </View>
           <View>
-            {language == "_ur" ? (
-              <Text style={styles.languageTextStyle}>Urdu</Text>
-            ) : language == "_en" ? (
-              <Text style={styles.languageTextStyle}>English</Text>
-            ) : language == "_tr" ? (
-              <Text style={styles.languageTextStyle}>Turkish</Text>
-            ) : language == "_ru" ? (
-              <Text style={styles.languageTextStyle}>Russian</Text>
-            ) : language == "_sv" ? (
-              <Text style={styles.languageTextStyle}>Swedish</Text>
-            ) : language == "_id" ? (
-              <Text style={styles.languageTextStyle}>Indonesian</Text>
-            ) : language == "_fr" ? (
-              <Text style={styles.languageTextStyle}>French</Text>
-            ) : language == "_es" ? (
-              <Text style={styles.languageTextStyle}>Spanish</Text>
-            ) : language == "_zh" ? (
-              <Text style={styles.languageTextStyle}>Chinese</Text>
-            ) : language == "_bn" ? (
-              <Text style={styles.languageTextStyle}>Bengali</Text>
-            ) : null}
+            <Text style={styles.languageTextStyle}>
+              {language || "Arabic"}
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
